@@ -97,3 +97,68 @@ alt-svc: h3=":443"; ma=86400
 **Content-Type:** `application/json; charset=utf-8` means the response is JSON data encoded using UTF-8.
 
 
+
+
+## Request 3 — Get User 1
+
+### Request
+
+```bash
+curl -i https://jsonplaceholder.typicode.com/users/1
+```
+
+### Response
+
+```text
+HTTP/2 200 
+date: Fri, 14 Aug 2026 17:42:41 GMT
+content-type: application/json; charset=utf-8
+content-length: 509
+access-control-allow-credentials: true
+cache-control: max-age=43200
+etag: W/"1fd-+2Y3G3w049iSZtw5t1mzSnunngE"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=c4W1UxriyoWTYFuUhbAlZOrDzICU7r%2BRoXsXRciuS0Y%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1786374767"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=c4W1UxriyoWTYFuUhbAlZOrDzICU7r%2BRoXsXRciuS0Y%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1786374767"
+server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-ratelimit-reset: 1786374775
+age: 7224
+accept-ranges: bytes
+cf-cache-status: HIT
+cf-ray: a2b1c1ed8bd6d8ea-BOM
+alt-svc: h3=":443"; ma=86400
+
+{
+  "id": 1,
+  "name": "Leanne Graham",
+  "username": "Bret",
+  "email": "Sincere@april.biz",
+  "address": {
+    "street": "Kulas Light",
+    "suite": "Apt. 556",
+    "city": "Gwenborough",
+    "zipcode": "92998-3874",
+    "geo": {
+      "lat": "-37.3159",
+      "lng": "81.1496"
+    }
+  },
+  "phone": "1-770-736-8031 x56442",
+  "website": "hildegard.org",
+  "company": {
+    "name": "Romaguera-Crona",
+    "catchPhrase": "Multi-layered client-server neural-net",
+    "bs": "harness real-time e-markets"
+  }
+}
+```
+**Status:** `200 OK` means the server successfully processed the request and returned the requested resource.
+**Content-Type:** `application/json; charset=utf-8` means the response is JSON data encoded using UTF-8.
