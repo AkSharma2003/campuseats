@@ -49,29 +49,29 @@ alt-svc: h3=":443"; ma=86400
 
 
 
-## Request 2 — Get Post 2
+## Request 2 — Get Comments 1
 
 ### Request
 
 ```bash
-curl -i https://jsonplaceholder.typicode.com/posts/2
+curl -i https://jsonplaceholder.typicode.com/comments/1
 ```
 
 ### Response
 
 ```text
 HTTP/2 200 
-date: Fri, 14 Aug 2026 17:35:09 GMT
+date: Sat, 15 Aug 2026 11:38:10 GMT
 content-type: application/json; charset=utf-8
-content-length: 278
+content-length: 268
 access-control-allow-credentials: true
 cache-control: max-age=43200
-etag: W/"116-jnDuMpjju89+9j7e0BqkdFsVRjs"
+etag: W/"10c-KJ4I9RM/+33TKdV8CFsIvqsDSP0"
 expires: -1
 nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
 pragma: no-cache
-report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=QLiSye1cwBbJeXgFNCBUxgevbRgIRWjlLgw4ygV1udE%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1786354973"}],"max_age":3600}
-reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=QLiSye1cwBbJeXgFNCBUxgevbRgIRWjlLgw4ygV1udE%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1786354973"
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=bB%2BN%2FFUdyCDto4SqNATX66bYsXSTyfHVG%2BrJgswnemI%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1786780972"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=bB%2BN%2FFUdyCDto4SqNATX66bYsXSTyfHVG%2BrJgswnemI%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1786780972"
 server: cloudflare
 vary: Origin, Accept-Encoding
 via: 2.0 heroku-router
@@ -79,18 +79,19 @@ x-content-type-options: nosniff
 x-powered-by: Express
 x-ratelimit-limit: 1000
 x-ratelimit-remaining: 999
-x-ratelimit-reset: 1786355034
-age: 21774
+x-ratelimit-reset: 1786781023
+age: 12918
 accept-ranges: bytes
 cf-cache-status: HIT
-cf-ray: a2b1b6e2fd5ee565-BOM
+cf-ray: a2b7e95aaf60cc07-BOM
 alt-svc: h3=":443"; ma=86400
 
 {
-  "userId": 1,
-  "id": 2,
-  "title": "qui est esse",
-  "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+  "postId": 1,
+  "id": 1,
+  "name": "id labore ex et quam laborum",
+  "email": "Eliseo@gardner.biz",
+  "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
 }
 ```
 **Status:** `200 OK` means the server successfully processed the request and returned the requested resource.

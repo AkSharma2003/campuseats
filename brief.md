@@ -3,7 +3,7 @@
 ## What
 
 CampusEats is a food ordering platform for a college campus. 
-Users can browse food products from different campus in vendors,
+Users can browse food products from different campus vendors,
 view product details and prices, add products to a shopping cart, and
 place orders online. The system also allows users to track their orders.
 
