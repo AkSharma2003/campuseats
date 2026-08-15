@@ -148,29 +148,29 @@ alt-svc: h3=":443"; ma=86400
 
 
 
-## Request 4 — Get Comments 1
+## Request 4 — Get Photos 1
 
 ### Request
 
 ```bash
-curl -i https://jsonplaceholder.typicode.com/comments/1
+curl -i https://jsonplaceholder.typicode.com/photos/1
 ```
 
 ### Response
 
 ```text
 HTTP/2 200 
-date: Fri, 14 Aug 2026 17:49:22 GMT
+date: Sat, 15 Aug 2026 11:53:55 GMT
 content-type: application/json; charset=utf-8
-content-length: 268
+content-length: 205
 access-control-allow-credentials: true
 cache-control: max-age=43200
-etag: W/"10c-KJ4I9RM/+33TKdV8CFsIvqsDSP0"
+etag: W/"cd-fwYyS5EukQMGcHFgOIIc7Xfm1fw"
 expires: -1
 nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
 pragma: no-cache
-report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=xdWkQvXg9gANlArctYa9YcGE%2FFvv3ms8I9qeRCvs0w0%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1786714968"}],"max_age":3600}
-reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=xdWkQvXg9gANlArctYa9YcGE%2FFvv3ms8I9qeRCvs0w0%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1786714968"
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=HJO1Ns5ntF5vjOmHcMDZazmdxwvc6S5pYf1ZGT%2BFmEE%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1786794835"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=HJO1Ns5ntF5vjOmHcMDZazmdxwvc6S5pYf1ZGT%2BFmEE%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1786794835"
 server: cloudflare
 vary: Origin, Accept-Encoding
 via: 2.0 heroku-router
@@ -178,19 +178,18 @@ x-content-type-options: nosniff
 x-powered-by: Express
 x-ratelimit-limit: 1000
 x-ratelimit-remaining: 999
-x-ratelimit-reset: 1786714990
-age: 14793
+x-ratelimit-reset: 1786794883
 accept-ranges: bytes
-cf-cache-status: HIT
-cf-ray: a2b1cbb68ea2f7e1-BOM
+cf-cache-status: MISS
+cf-ray: a2b80068df9516dc-BOM
 alt-svc: h3=":443"; ma=86400
 
 {
-  "postId": 1,
+  "albumId": 1,
   "id": 1,
-  "name": "id labore ex et quam laborum",
-  "email": "Eliseo@gardner.biz",
-  "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+  "title": "accusamus beatae ad facilis cum similique qui sunt",
+  "url": "https://via.placeholder.com/600/92c952",
+  "thumbnailUrl": "https://via.placeholder.com/150/92c952"
 }
 ```
 **Status:** `200 OK` means the server successfully processed the request and returned the requested resource.
