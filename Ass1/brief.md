@@ -2,73 +2,59 @@
 
 ## What
 
-CampusEats is a food ordering platform for a college campus. 
-Users can browse food products from different campus vendors,
-view product details and prices, add products to a shopping cart, and
-place orders online. The system also allows users to track their orders.
+CampusEats is a food ordering and delivery system designed for a campus environment. Students can log in, manage their profile and delivery addresses, browse campus restaurants and their menus, add food items to a cart, and place orders. They can pay online and track their delivery after a rider is assigned. The system also sends notifications when an order is placed, paid, on the way, and delivered.
+
+The system is organized into six main services: Accounts, Catalogue, Orders, Payments, Delivery, and Notifications. Each service has a clear responsibility and manages its own data.
 
 ## Who
 
-The main users of CampusEats are:
-
-- Students
-- Faculty and staff
-- Food vendors
-- Administrators
-
-Students, faculty, and staff purchase food through the platform. Vendors
-list their food products and manage orders. Administrators manage users,
-vendors, products, and the overall platform.
+- **Students** — browse food, manage their accounts, place orders, pay online, and track deliveries.
+- **Campus Restaurants** — provide restaurants, menus, food items, and prices.
+- **Riders** — are assigned to orders and deliver food to students.
+- **CampusEats Services** — work together to complete the food ordering and delivery process.
 
 ## Nouns
 
-The main nouns/entities in the system are:
+The main **nouns** (things/data in the system) are:
 
-- User
-- Customer
-- Vendor
-- Product
-- Food Item
-- Category
+- Student
+- User profile
+- Delivery address
+- Restaurant
 - Menu
+- Food item
+- Price
 - Cart
-- Cart Item
 - Order
-- Order Item
+- Order status
 - Payment
-- Address
-- Order Status
-- Review
-- Administrator
+- Transaction
+- Refund
+- Rider
+- Delivery assignment
+- Notification
+- Message
 
 ## Verbs
 
-The main verbs/actions in the system are:
+The main **verbs** (actions/tasks/contracts) are:
 
-- Register
-- Login
-- Browse products
-- Search products
-- View product
-- Add product to cart
-- Remove product from cart
-- Update cart quantity
-- Place order
-- Make payment
-- Cancel order
-- Track order
-- Review product
-- Add product
-- Update product
-- Remove product
-- Manage orders
-- Manage users
-- Manage vendors
+- Log in
+- Manage profile
+- Manage delivery addresses
+- Browse restaurants
+- Browse menus
+- Check item availability and price
+- Add items to cart
+- Place an order
+- Get order details
+- Cancel an order
+- Pay / charge payment
+- Refund payment
+- Assign a rider
+- Track delivery
+- Send notifications
 
 ## Summary
 
-CampusEats is a food ordering platform designed for a college campus.
-Users can discover food items from different campus vendors, browse
-menus, add food items to their cart, place orders, make payments, and
-track their food orders. Vendors can manage their food items and orders,
-while administrators manage the overall platform.
+CampusEats connects students with campus restaurants so they can order food, pay for it, and receive or track their delivery. The system separates these responsibilities into different services, with each service providing specific operations while hiding its internal implementation.
