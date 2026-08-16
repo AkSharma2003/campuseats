@@ -59,8 +59,8 @@ CREATE TABLE catalogue_menu_items (
 -- ORDERS SERVICE
 CREATE TABLE orders_orders (
     order_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL,            
-    address_id UUID NOT NULL,         
+    user_id UUID NOT NULL,             
+    address_id UUID NOT NULL,          
     status VARCHAR(30) NOT NULL,
     total_amount NUMERIC(10,2) NOT NULL CHECK (total_amount >= 0),
     placed_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -69,7 +69,7 @@ CREATE TABLE orders_orders (
 CREATE TABLE orders_order_items (
     order_item_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     order_id UUID NOT NULL,
-    item_id UUID NOT NULL,             
+    item_id UUID NOT NULL,            
     item_name VARCHAR(150) NOT NULL,   
     unit_price NUMERIC(10,2) NOT NULL CHECK (unit_price >= 0),
     quantity INTEGER NOT NULL CHECK (quantity > 0),
@@ -81,7 +81,7 @@ CREATE TABLE orders_order_items (
 -- PAYMENTS SERVICE
 CREATE TABLE payments_payments (
     payment_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    order_id UUID NOT NULL,           
+    order_id UUID NOT NULL,          
     amount NUMERIC(10,2) NOT NULL CHECK (amount >= 0),
     currency CHAR(3) NOT NULL DEFAULT 'USD',
     status VARCHAR(30) NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE delivery_riders (
 
 CREATE TABLE delivery_assignments (
     assignment_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    order_id UUID NOT NULL,             
+    order_id UUID NOT NULL,            
     rider_id UUID NOT NULL,
     status VARCHAR(30) NOT NULL,
     assigned_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -122,12 +122,11 @@ CREATE TABLE delivery_assignments (
         ON DELETE RESTRICT
 );
 
-
 -- NOTIFICATIONS SERVICE
 CREATE TABLE notifications_notifications (
     notification_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL,             
-    order_id UUID,                      
+    user_id UUID NOT NULL,              
+    order_id UUID,                     
     type VARCHAR(40) NOT NULL,
     message TEXT NOT NULL,
     status VARCHAR(30) NOT NULL DEFAULT 'pending',
