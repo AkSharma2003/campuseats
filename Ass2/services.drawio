@@ -1,107 +1,162 @@
 <mxfile host="65bd71144e">
     <diagram id="Mm1F7nDBkRD3LdcnaePU" name="Page-1">
-        <mxGraphModel dx="936" dy="670" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+        <mxGraphModel dx="2074" dy="1198" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#FFFFFF" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="53" value="" style="edgeStyle=none;html=1;entryX=0.54;entryY=0.008;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="10" target="49">
+                <mxCell id="10" value="Catalogue Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="382" y="180" width="230" height="220" as="geometry">
+                        <mxRectangle x="427" y="190" width="110" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="Owns:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;" parent="10" vertex="1">
+                    <mxGeometry y="30" width="230" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Food Items&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Categories&lt;br&gt;&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Menu&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Prices&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Restaurants&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="10" vertex="1">
+                    <mxGeometry y="50" width="230" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Member:&amp;nbsp;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Ankit Kumar Sharma&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Piyush Lalchand Menghani&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vijay Singh&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vivek Kumar Kosta&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Shubham Gupta&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1" parent="10" vertex="1">
+                    <mxGeometry y="130" width="230" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="14" target="12">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="720" y="110"/>
+                            <mxPoint x="235" y="270"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="10" value="Catalogue Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
-                    <mxGeometry x="314" y="40" width="200" height="140" as="geometry">
+                <mxCell id="14" value="Order Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="115" y="404" width="240" height="230" as="geometry">
                         <mxRectangle x="40" y="40" width="110" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="11" value="Owns:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;" vertex="1" parent="10">
-                    <mxGeometry y="30" width="200" height="30" as="geometry"/>
+                <mxCell id="15" value="Owns:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;" parent="14" vertex="1">
+                    <mxGeometry y="30" width="240" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Food Items&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Categories&lt;br&gt;&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Menu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="10">
-                    <mxGeometry y="60" width="200" height="50" as="geometry"/>
+                <mxCell id="16" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Carts&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Cart Items&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Orders&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Order Items&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Order Status&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="14" vertex="1">
+                    <mxGeometry y="60" width="240" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" value="Member: Ankit Kumar Sharma" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="10">
-                    <mxGeometry y="110" width="200" height="30" as="geometry"/>
+                <mxCell id="102" value="Member:&amp;nbsp;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Ankit Kumar Sharma&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Piyush Lalchand Menghani&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vijay Singh&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vivek Kumar Kosta&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Shubham Gupta&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="14">
+                    <mxGeometry y="140" width="240" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="59" value="" style="edgeStyle=none;html=1;entryX=0.015;entryY=0.233;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="229" y="358.854077253219" as="sourcePoint"/>
-                        <mxPoint x="362" y="359.99" as="targetPoint"/>
+                <mxCell id="18" value="Payment Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="485" y="450" width="230" height="200" as="geometry">
+                        <mxRectangle x="40" y="40" width="110" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="64" value="" style="edgeStyle=none;html=1;entryX=0;entryY=0.38;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.45;exitY=-0.013;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="14" target="12">
+                <mxCell id="19" value="Owns:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;" parent="18" vertex="1">
+                    <mxGeometry y="30" width="230" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="&lt;div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Payments&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Transactions&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Refunds&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="18" vertex="1">
+                    <mxGeometry y="60" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="130" value="Member:&amp;nbsp;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Ankit Kumar Sharma&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Piyush Lalchand Menghani&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vijay Singh&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vivek Kumar Kosta&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Shubham Gupta&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="18">
+                    <mxGeometry y="110" width="230" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="User (Accounts) Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="825" y="404" width="230" height="210" as="geometry">
+                        <mxRectangle x="40" y="40" width="110" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="Owns:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;" parent="49" vertex="1">
+                    <mxGeometry y="30" width="230" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Users&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Profiles&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Addresses&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Login Credentials&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="49" vertex="1">
+                    <mxGeometry y="60" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="126" value="Member:&amp;nbsp;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Ankit Kumar Sharma&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Piyush Lalchand Menghani&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vijay Singh&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vivek Kumar Kosta&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Shubham Gupta&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="49">
+                    <mxGeometry y="120" width="230" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="makePayment()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="375" y="470" width="100" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="getUser()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="795" y="800" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="CampusEats - Service Design&amp;nbsp; Diagram" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="449" y="80" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="95" value="checkItem()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="255" y="240" width="87" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="getVendor()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="745" y="240" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="Notiffication Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+                    <mxGeometry x="115" y="730" width="240" height="210" as="geometry">
+                        <mxRectangle x="40" y="40" width="110" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="105" value="Owns:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;" vertex="1" parent="104">
+                    <mxGeometry y="30" width="240" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="106" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;Notifications&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Messages&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Notification Status&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="104">
+                    <mxGeometry y="60" width="240" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="108" value="Member:&amp;nbsp;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Ankit Kumar Sharma&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Piyush Lalchand Menghani&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vijay Singh&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vivek Kumar Kosta&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Shubham Gupta&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="104">
+                    <mxGeometry y="110" width="240" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="110" value="Delivery Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="475" y="740" width="240" height="220" as="geometry">
+                        <mxRectangle x="40" y="40" width="110" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="111" value="Owns:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;" vertex="1" parent="110">
+                    <mxGeometry y="30" width="240" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="112" value="&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Riders&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Delivery Assignments&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Delivery Status&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Location&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="110">
+                    <mxGeometry y="60" width="240" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="113" value="Member:&amp;nbsp;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Ankit Kumar Sharma&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Piyush Lalchand Menghani&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vijay Singh&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vivek Kumar Kosta&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Shubham Gupta&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="110">
+                    <mxGeometry y="120" width="240" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="127" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="49">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="130" y="200" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="120" y="119"/>
+                            <mxPoint x="940" y="270"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="69" value="" style="edgeStyle=none;html=1;entryX=0.555;entryY=1.067;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="52">
+                <mxCell id="129" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.004;entryY=0.788;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="16" target="19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="135" value="" style="endArrow=classic;html=1;dashed=1;entryX=1.002;entryY=0.211;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="102">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="485" y="563" as="sourcePoint"/>
+                        <mxPoint x="354.99999999999994" y="560" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="136" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.495;entryY=1.018;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="112" target="126">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="120" y="430" as="sourcePoint"/>
-                        <mxPoint x="130" y="509" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="120" y="490"/>
-                            <mxPoint x="721" y="490"/>
+                            <mxPoint x="939" y="830"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="14" value="Order Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
-                    <mxGeometry x="30" y="279" width="200" height="150" as="geometry">
-                        <mxRectangle x="40" y="40" width="110" height="30" as="alternateBounds"/>
+                <mxCell id="137" value="" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.704;exitY=1.037;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="283.9599999999999" y="634" as="sourcePoint"/>
+                        <mxPoint x="595" y="736.67" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="284" y="676.67"/>
+                            <mxPoint x="595" y="676.67"/>
+                        </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="15" value="Owns:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;" vertex="1" parent="14">
-                    <mxGeometry y="30" width="200" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="16" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Carts&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Cart Items&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Orders&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Order Items&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="14">
-                    <mxGeometry y="60" width="200" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="17" value="Member: Ankit Kumar Sharma" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="14">
-                    <mxGeometry y="120" width="200" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="18" value="Payment Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
-                    <mxGeometry x="361" y="290" width="200" height="120" as="geometry">
-                        <mxRectangle x="40" y="40" width="110" height="30" as="alternateBounds"/>
+                <mxCell id="138" value="" style="endArrow=classic;html=1;exitX=0.378;exitY=1.006;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.373;entryY=-0.002;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="102" target="104">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="145" y="700" as="sourcePoint"/>
+                        <mxPoint x="205" y="728" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="19" value="Owns:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;" vertex="1" parent="18">
-                    <mxGeometry y="30" width="200" height="30" as="geometry"/>
+                <mxCell id="140" value="sendNotification()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="205" y="680" width="110" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Payments" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="18">
-                    <mxGeometry y="60" width="200" height="30" as="geometry"/>
+                <mxCell id="141" value="assignRider()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="375" y="645" width="100" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="Member: Ankit Kumar Sharma" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="18">
-                    <mxGeometry y="90" width="200" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="49" value="User Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
-                    <mxGeometry x="610" y="280" width="200" height="130" as="geometry">
-                        <mxRectangle x="40" y="40" width="110" height="30" as="alternateBounds"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="50" value="Owns:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;" vertex="1" parent="49">
-                    <mxGeometry y="30" width="200" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="51" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Users&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Vendores" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="49">
-                    <mxGeometry y="60" width="200" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="52" value="Member: Ankit Kumar Sharma" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="49">
-                    <mxGeometry y="100" width="200" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="54" value="makePayment()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="250" y="335" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="70" value="getUser()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="400" y="460" width="80" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="71" value="checkItem()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="180" y="90" width="80" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="73" value="getVendor()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="580" y="80" width="80" height="30" as="geometry"/>
+                <mxCell id="142" value="paymentStatus()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="375" y="532.5" width="100" height="35" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
