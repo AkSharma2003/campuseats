@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:pay="urn:unipay">
+
+    <soap:Body>
+
+        <soap:Fault>
+
+            <faultcode>
+                soap:Client
+            </faultcode>
+
+            <faultstring>
+                Payment declined
+            </faultstring>
+
+            <detail>
+
+                <pay:PaymentFault>
+                    Card payment was declined by the issuer.
+                </pay:PaymentFault>
+
+            </detail>
+
+        </soap:Fault>
+
+    </soap:Body>
+
+</soap:Envelope>
