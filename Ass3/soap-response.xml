@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:pay="urn:unipay">
+
+    <soap:Body>
+
+        <pay:chargeResult>
+
+            <pay:transactionId>
+                TXN-2026-0001
+            </pay:transactionId>
+
+            <pay:status>
+                APPROVED
+            </pay:status>
+
+        </pay:chargeResult>
+
+    </soap:Body>
+
+</soap:Envelope>
