@@ -19,7 +19,15 @@
             <detail>
 
                 <pay:PaymentFault>
-                    Card payment was declined by the issuer.
+
+                    <pay:code>
+                        CARD_DECLINED
+                    </pay:code>
+
+                    <pay:message>
+                        Card payment was declined by the issuer.
+                    </pay:message>
+
                 </pay:PaymentFault>
 
             </detail>
