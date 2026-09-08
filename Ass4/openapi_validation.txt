@@ -1,0 +1,1 @@
+OK: openapi.yaml has zero errors
