@@ -1,0 +1,262 @@
+# CampusEats Assignment 5 - D1 curl -v Transcript
+
+## 1. Successful Create - 201 Created
+
+Request:
+
+> POST /items HTTP/1.1
+> Host: 127.0.0.1:8080
+> User-Agent: curl/8.7.1
+> Authorization: Bearer demo-token
+> Content-Type: application/json
+> Accept: application/json
+> Idempotency-Key: d1-real-001
+> Content-Length: 58
+
+Response:
+
+< HTTP/1.1 201 CREATED
+< Server: Werkzeug/3.1.8 Python/3.14.5
+< Content-Type: application/json
+< Content-Length: 157
+< Location: /items/1
+< X-RateLimit-Limit: 5
+< X-RateLimit-Remaining: 4
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Methods: GET, POST, OPTIONS
+< Access-Control-Allow-Headers: Content-Type, Authorization, Accept, Idempotency-Key, If-None-Match, If-Match
+< X-Content-Type-Options: nosniff
+< Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+Response body:
+
+{
+"createdAt": "2026-09-22T17:15:40.809757+00:00",
+"id": 1,
+"isAvailable": true,
+"name": "D1 Curl Item",
+"pricePaise": 8000,
+"restaurantId": 1
+}
+
+## 2. Repeated Create with Same Idempotency-Key
+
+Request:
+
+> POST /items HTTP/1.1
+> Host: 127.0.0.1:8080
+> User-Agent: curl/8.7.1
+> Authorization: Bearer demo-token
+> Content-Type: application/json
+> Accept: application/json
+> Idempotency-Key: d1-real-001
+> Content-Length: 58
+
+Response:
+
+< HTTP/1.1 201 CREATED
+< Server: Werkzeug/3.1.8 Python/3.14.5
+< Content-Type: application/json
+< Content-Length: 157
+< Location: /items/1
+< X-RateLimit-Limit: 5
+< X-RateLimit-Remaining: 3
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Methods: GET, POST, OPTIONS
+< Access-Control-Allow-Headers: Content-Type, Authorization, Accept, Idempotency-Key, If-None-Match, If-Match
+< X-Content-Type-Options: nosniff
+< Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+Response body:
+
+{
+"createdAt": "2026-09-22T17:15:40.809757+00:00",
+"id": 1,
+"isAvailable": true,
+"name": "D1 Curl Item",
+"pricePaise": 8000,
+"restaurantId": 1
+}
+
+The same resource with id 1 was returned. No duplicate resource was created.
+
+## 3. Conditional GET - 304 Not Modified
+
+Request:
+
+> GET /items/1 HTTP/1.1
+> Host: 127.0.0.1:8080
+> User-Agent: curl/8.7.1
+> Accept: application/json
+> If-None-Match: "dc5e719ac9df624066786c66219f70c09f33b69a950e25d7c3df1ff54aabaf2c"
+
+Response:
+
+< HTTP/1.1 304 NOT MODIFIED
+< Server: Werkzeug/3.1.8 Python/3.14.5
+< ETag: "dc5e719ac9df624066786c66219f70c09f33b69a950e25d7c3df1ff54aabaf2c"
+< Cache-Control: private, max-age=60
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Methods: GET, POST, OPTIONS
+< Access-Control-Allow-Headers: Content-Type, Authorization, Accept, Idempotency-Key, If-None-Match, If-Match
+< X-Content-Type-Options: nosniff
+< Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+No response body was returned.
+
+## 4. Conditional Write - 412 Precondition Failed
+
+Request:
+
+> POST /items/1/availability HTTP/1.1
+> Host: 127.0.0.1:8080
+> User-Agent: curl/8.7.1
+> Authorization: Bearer demo-token
+> Content-Type: application/json
+> Accept: application/json
+> If-Match: "stale-etag-999"
+> Content-Length: 21
+
+Request body:
+
+{
+"isAvailable": false
+}
+
+Response:
+
+< HTTP/1.1 412 PRECONDITION FAILED
+< Server: Werkzeug/3.1.8 Python/3.14.5
+< Content-Type: application/json
+< Content-Length: 142
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Methods: GET, POST, OPTIONS
+< Access-Control-Allow-Headers: Content-Type, Authorization, Accept, Idempotency-Key, If-None-Match, If-Match
+< X-Content-Type-Options: nosniff
+< Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+Response body:
+
+{
+"detail": "If-Match ETag does not match current resource",
+"status": 412,
+"title": "Error",
+"type": "/errors/precondition-failed"
+}
+
+## 5. Bad Request - 400
+
+Request:
+
+> POST /items HTTP/1.1
+> Host: 127.0.0.1:8080
+> User-Agent: curl/8.7.1
+> Authorization: Bearer demo-token
+> Content-Type: application/json
+> Accept: application/json
+> Idempotency-Key: d1-bad-400
+> Content-Length: 57
+
+Request body:
+
+{
+"restaurantId": 1,
+"name": "Bad Item",
+"pricePaise": "wrong"
+}
+
+Response:
+
+< HTTP/1.1 400 BAD REQUEST
+< Server: Werkzeug/3.1.8 Python/3.14.5
+< Content-Type: application/json
+< Content-Length: 188
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Methods: GET, POST, OPTIONS
+< Access-Control-Allow-Headers: Content-Type, Authorization, Accept, Idempotency-Key, If-None-Match, If-Match
+< X-Content-Type-Options: nosniff
+< Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+Response body:
+
+{
+"detail": "",
+"errors": [
+[
+"pricePaise",
+"positive integer required"
+]
+],
+"status": 400,
+"title": "Invalid request",
+"type": "/errors/invalid-request"
+}
+
+## 6. Resource Not Found - 404
+
+Request:
+
+> GET /items/9999 HTTP/1.1
+> Host: 127.0.0.1:8080
+> User-Agent: curl/8.7.1
+> Accept: application/json
+
+Response:
+
+< HTTP/1.1 404 NOT FOUND
+< Server: Werkzeug/3.1.8 Python/3.14.5
+< Content-Type: application/json
+< Content-Length: 120
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Methods: GET, POST, OPTIONS
+< Access-Control-Allow-Headers: Content-Type, Authorization, Accept, Idempotency-Key, If-None-Match, If-Match
+< X-Content-Type-Options: nosniff
+< Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+Response body:
+
+{
+"detail": "Item 9999 not found",
+"status": 404,
+"title": "Item not found",
+"type": "/errors/item-not-found"
+}
+
+## 7. Unauthorized Request - 401
+
+Request:
+
+> POST /items HTTP/1.1
+> Host: 127.0.0.1:8080
+> User-Agent: curl/8.7.1
+> Content-Type: application/json
+> Accept: application/json
+> Idempotency-Key: d1-no-auth
+> Content-Length: 63
+
+Authorization header was intentionally omitted.
+
+Response:
+
+< HTTP/1.1 401 UNAUTHORIZED
+< Server: Werkzeug/3.1.8 Python/3.14.5
+< Content-Type: application/json
+< Content-Length: 121
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Methods: GET, POST, OPTIONS
+< Access-Control-Allow-Headers: Content-Type, Authorization, Accept, Idempotency-Key, If-None-Match, If-Match
+< X-Content-Type-Options: nosniff
+< Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+Response body:
+
+{
+"detail": "Missing or invalid Bearer token",
+"status": 401,
+"title": "Error",
+"type": "/errors/unauthorized"
+}
+
+## HTTP Version
+
+All HTTP requests and responses above were captured using HTTP/1.1.

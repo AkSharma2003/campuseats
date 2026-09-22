@@ -1,3 +1,4 @@
+
 openapi: 3.0.3
 
 info:
@@ -19,8 +20,24 @@ paths:
         - in: header
           name: Idempotency-Key
           required: false
+          description: Prevents duplicate creation when the same request is retried.
           schema:
             type: string
+
+        - in: header
+          name: Authorization
+          required: true
+          description: Bearer authentication token.
+          schema:
+            type: string
+
+        - in: header
+          name: Accept
+          required: false
+          description: Requested response format.
+          schema:
+            type: string
+            example: application/json
 
       requestBody:
         required: true
@@ -30,12 +47,22 @@ paths:
               $ref: '#/components/schemas/CreateItemRequest'
 
       responses:
+
         '201':
           description: Item created successfully
           headers:
             Location:
+              description: URI of the newly created item.
               schema:
                 type: string
+            X-RateLimit-Limit:
+              description: Maximum requests allowed in the rate-limit window.
+              schema:
+                type: integer
+            X-RateLimit-Remaining:
+              description: Requests remaining in the current rate-limit window.
+              schema:
+                type: integer
           content:
             application/json:
               schema:
@@ -48,8 +75,49 @@ paths:
               schema:
                 $ref: '#/components/schemas/Problem'
 
+        '401':
+          description: Missing or invalid Bearer token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+        '406':
+          description: Requested response format is not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+        '409':
+          description: Resource conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
         '422':
           description: Domain validation failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+        '429':
+          description: Rate limit exceeded
+          headers:
+            Retry-After:
+              description: Number of seconds to wait before retrying.
+              schema:
+                type: integer
+            X-RateLimit-Limit:
+              description: Maximum requests allowed in the rate-limit window.
+              schema:
+                type: integer
+            X-RateLimit-Remaining:
+              description: Requests remaining in the current rate-limit window.
+              schema:
+                type: integer
           content:
             application/json:
               schema:
@@ -104,6 +172,13 @@ paths:
             maximum: 100
             default: 20
 
+        - in: header
+          name: Accept
+          required: false
+          schema:
+            type: string
+            example: application/json
+
       responses:
 
         '200':
@@ -122,6 +197,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/Problem'
 
+        '406':
+          description: Requested response format is not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+        '429':
+          description: Rate limit exceeded
+          headers:
+            Retry-After:
+              description: Number of seconds to wait before retrying.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
 
   /items/{id}:
 
@@ -129,23 +223,66 @@ paths:
       summary: Retrieve a single menu item
 
       parameters:
+
         - in: path
           name: id
           required: true
           schema:
             type: integer
 
+        - in: header
+          name: Accept
+          required: false
+          schema:
+            type: string
+            example: application/json
+
+        - in: header
+          name: If-None-Match
+          required: false
+          description: Returns 304 when the supplied ETag matches the current resource.
+          schema:
+            type: string
+            example: '"c95d628d00fb1dfa5228ab22c4a7dc14059cab3e5d47bd232a4fa54e0fdc2ec7"'
+
       responses:
 
         '200':
           description: Item found
+          headers:
+            ETag:
+              description: Current representation identifier for the item.
+              schema:
+                type: string
+            Cache-Control:
+              description: Caching policy for the item representation.
+              schema:
+                type: string
+                example: private, max-age=60
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ItemResponse'
 
+        '304':
+          description: Item has not changed; no response body is returned.
+          headers:
+            ETag:
+              schema:
+                type: string
+            Cache-Control:
+              schema:
+                type: string
+
         '404':
           description: Item not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+        '406':
+          description: Requested response format is not supported
           content:
             application/json:
               schema:
@@ -155,15 +292,47 @@ paths:
     options:
       summary: Describe supported methods for a menu item
 
+      parameters:
+        - in: header
+          name: Origin
+          required: false
+          schema:
+            type: string
+
+        - in: header
+          name: Access-Control-Request-Method
+          required: false
+          schema:
+            type: string
+
+        - in: header
+          name: Access-Control-Request-Headers
+          required: false
+          schema:
+            type: string
+
       responses:
 
         '204':
           description: Supported methods
           headers:
             Allow:
+              description: HTTP methods supported by this resource.
               schema:
                 type: string
                 example: GET, OPTIONS
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: "*"
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: GET, POST, OPTIONS
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: Content-Type, Authorization, Accept, Idempotency-Key, If-None-Match, If-Match
 
 
   /items/{id}/availability:
@@ -172,11 +341,40 @@ paths:
       summary: Update item availability status
 
       parameters:
+
         - in: path
           name: id
           required: true
           schema:
             type: integer
+
+        - in: header
+          name: Authorization
+          required: true
+          description: Bearer authentication token.
+          schema:
+            type: string
+
+        - in: header
+          name: Accept
+          required: false
+          schema:
+            type: string
+            example: application/json
+
+        - in: header
+          name: If-Match
+          required: false
+          description: Prevents updating a resource when the supplied ETag is stale.
+          schema:
+            type: string
+
+        - in: header
+          name: Idempotency-Key
+          required: false
+          description: Client supplied key for safe retry handling.
+          schema:
+            type: string
 
       requestBody:
         required: true
@@ -199,6 +397,20 @@ paths:
                   isAvailable:
                     type: boolean
 
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+        '401':
+          description: Missing or invalid Bearer token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
         '404':
           description: Item not found
           content:
@@ -206,8 +418,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/Problem'
 
+        '406':
+          description: Requested response format is not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
         '409':
           description: State conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+        '412':
+          description: If-Match precondition failed because the ETag is stale.
           content:
             application/json:
               schema:
@@ -265,6 +491,7 @@ components:
 
         createdAt:
           type: string
+          format: date-time
 
 
     Problem:
@@ -290,3 +517,7 @@ components:
 
         errors:
           type: array
+          items:
+            type: array
+            items:
+              type: string
