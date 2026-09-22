@@ -1,26 +1,34 @@
 openapi: 3.0.3
+
 info:
   title: CampusEats Catalogue Service
   version: "1.0.0"
   description: Manages menu items and availability for CampusEats.
+
 servers:
   - url: http://localhost:8080
+
 paths:
+
   /items:
+
     post:
       summary: Create a menu item
+
       parameters:
         - in: header
           name: Idempotency-Key
           required: false
           schema:
             type: string
+
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateItemRequest'
+
       responses:
         '201':
           description: Item created successfully
@@ -32,27 +40,72 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ItemResponse'
+
         '400':
           description: Malformed request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Problem'
+
         '422':
           description: Domain validation failure
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Problem'
+
+
     get:
-      summary: List menu items filtered by restaurant
+      summary: List menu items with filtering, sorting, and pagination
+
       parameters:
+
         - in: query
           name: restaurantId
           required: false
           schema:
             type: integer
+
+        - in: query
+          name: sort
+          required: false
+          schema:
+            type: string
+            enum:
+              - name
+              - pricePaise
+              - createdAt
+
+        - in: query
+          name: order
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: asc
+
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+
       responses:
+
         '200':
           description: List of menu items
           content:
@@ -61,6 +114,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ItemResponse'
+
         '400':
           description: Invalid query parameter
           content:
@@ -68,22 +122,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/Problem'
 
+
   /items/{id}:
+
     get:
       summary: Retrieve a single menu item
+
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: integer
+
       responses:
+
         '200':
           description: Item found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ItemResponse'
+
         '404':
           description: Item not found
           content:
@@ -91,22 +151,42 @@ paths:
               schema:
                 $ref: '#/components/schemas/Problem'
 
+
+    options:
+      summary: Describe supported methods for a menu item
+
+      responses:
+
+        '204':
+          description: Supported methods
+          headers:
+            Allow:
+              schema:
+                type: string
+                example: GET, OPTIONS
+
+
   /items/{id}/availability:
+
     post:
       summary: Update item availability status
+
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: integer
+
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/AvailabilityRequest'
+
       responses:
+
         '202':
           description: Availability state transition accepted
           content:
@@ -118,12 +198,14 @@ paths:
                     type: integer
                   isAvailable:
                     type: boolean
+
         '404':
           description: Item not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Problem'
+
         '409':
           description: State conflict
           content:
@@ -131,51 +213,80 @@ paths:
               schema:
                 $ref: '#/components/schemas/Problem'
 
+
 components:
+
   schemas:
+
     CreateItemRequest:
       type: object
-      required: [restaurantId, name, pricePaise]
+      required:
+        - restaurantId
+        - name
+        - pricePaise
       properties:
         restaurantId:
           type: integer
+
         name:
           type: string
+
         pricePaise:
           type: integer
           minimum: 1
+
+
     AvailabilityRequest:
       type: object
-      required: [isAvailable]
+      required:
+        - isAvailable
       properties:
         isAvailable:
           type: boolean
+
+
     ItemResponse:
       type: object
       properties:
         id:
           type: integer
+
         restaurantId:
           type: integer
+
         name:
           type: string
+
         pricePaise:
           type: integer
+
         isAvailable:
           type: boolean
+
         createdAt:
           type: string
+
+
     Problem:
       type: object
-      required: [type, title, status, detail]
+      required:
+        - type
+        - title
+        - status
+        - detail
       properties:
+
         type:
           type: string
+
         title:
           type: string
+
         status:
           type: integer
+
         detail:
           type: string
+
         errors:
           type: array
