@@ -1,0 +1,7 @@
+CS543 Assignment 6 — curl transcript
+
+This file is a capture checklist, not fabricated terminal output. The execution environment used to prepare this archive did not have Flask installed and could not access package indexes, so the service could not be run here to record genuine responses. To complete the submission, run the service and then run:
+
+  bash curl_commands.sh | tee transcript.txt
+
+Run the command from this Ass6 folder while the service is running. Review the output and ensure it contains the actual 201 + Location header, each required failure's status and Problem Details body, XML negotiation, and 503/429 Retry-After. Also exercise a real illegal transition by creating an order and PATCHing its returned ID to an invalid next state; document that output too. Keep the resulting real terminal output in this file.
