@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: CampusEats Orders Service - Assignment 6
+  version: 1.0.0
+  description: Standalone teaching implementation for CS543 Assignment 6.
+servers:
+  - url: http://127.0.0.1:5000
+paths:
+  /orders:
+    get:
+      summary: List orders
+      responses:
+        '200':
+          description: Orders collection
+          content:
+            application/json:
+              schema: {type: object, properties: {orders: {type: array, items: {$ref: '#/components/schemas/Order'}}}}
+            application/xml: {schema: {type: string}}
+        '406': {$ref: '#/components/responses/Problem'}
+        '429': {$ref: '#/components/responses/Problem'}
+    post:
+      summary: Create an order
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: false
+          schema: {type: string}
+          description: Reuse the same key when retrying the same create request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/CreateOrder'}
+      responses:
+        '201':
+          description: Order created; Location identifies the new order
+          headers:
+            Location:
+              schema: {type: string}
+              description: Relative URI of the created order, e.g. /orders/{id}
+          content:
+            application/json: {schema: {$ref: '#/components/schemas/Order'}}
+            application/xml: {schema: {type: string}}
+        '400': {$ref: '#/components/responses/Problem'}
+        '402': {$ref: '#/components/responses/Problem'}
+        '406': {$ref: '#/components/responses/Problem'}
+        '409': {$ref: '#/components/responses/Problem'}
+        '415': {$ref: '#/components/responses/Problem'}
+        '422': {$ref: '#/components/responses/Problem'}
+        '429': {$ref: '#/components/responses/Problem'}
+        '503': {$ref: '#/components/responses/Problem'}
+  /orders/{order_id}:
+    parameters:
+      - in: path
+        name: order_id
+        required: true
+        schema: {type: string}
+    get:
+      summary: Get one order
+      responses:
+        '200':
+          description: Order found
+          content:
+            application/json: {schema: {$ref: '#/components/schemas/Order'}}
+            application/xml: {schema: {type: string}}
+        '404': {$ref: '#/components/responses/Problem'}
+        '406': {$ref: '#/components/responses/Problem'}
+        '429': {$ref: '#/components/responses/Problem'}
+    patch:
+      summary: Transition an order to a new status
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status: {type: string, enum: [confirmed, cancelled, preparing, ready, completed]}
+      responses:
+        '200':
+          description: Updated order
+          content:
+            application/json: {schema: {$ref: '#/components/schemas/Order'}}
+            application/xml: {schema: {type: string}}
+        '404': {$ref: '#/components/responses/Problem'}
+        '406': {$ref: '#/components/responses/Problem'}
+        '409': {$ref: '#/components/responses/Problem'}
+        '422': {$ref: '#/components/responses/Problem'}
+        '429': {$ref: '#/components/responses/Problem'}
+    delete:
+      summary: Delete an order in a deletable state
+      responses:
+        '204': {description: Order deleted; response has no body}
+        '404': {$ref: '#/components/responses/Problem'}
+        '409': {$ref: '#/components/responses/Problem'}
+        '429': {$ref: '#/components/responses/Problem'}
+  /admin/simulate-unavailable:
+    post:
+      summary: Testing hook demonstrating transient service failure
+      description: Assignment-only hook; remove from production deployments.
+      responses:
+        '503':
+          description: Simulated transient unavailability
+          headers:
+            Retry-After: {schema: {type: integer}, description: Seconds before retrying}
+          content:
+            application/problem+json: {$ref: '#/components/schemas/ProblemDetails'}
+components:
+  schemas:
+    CreateOrder:
+      type: object
+      required: [items, address]
+      properties:
+        items:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required: [id, qty]
+            properties:
+              id: {type: string, minLength: 1}
+              qty: {type: integer, minimum: 1}
+              available: {type: boolean, description: Set false to exercise item-unavailable error}
+        address: {type: string, minLength: 1}
+        payment_declined: {type: boolean, description: Test flag for payment-declined scenario}
+    Order:
+      type: object
+      required: [id, items, address, status, createdAt]
+      properties:
+        id: {type: string}
+        items: {type: array, items: {type: object}}
+        address: {type: string}
+        status: {type: string}
+        createdAt: {type: string, format: date-time}
+    FieldError:
+      type: object
+      required: [field, message]
+      properties:
+        field: {type: string}
+        message: {type: string}
+    ProblemDetails:
+      type: object
+      required: [type, title, status, detail]
+      properties:
+        type: {type: string}
+        title: {type: string}
+        status: {type: integer}
+        detail: {type: string}
+        errors: {type: array, items: {$ref: '#/components/schemas/FieldError'}}
+  responses:
+    Problem:
+      description: Problem Details error response
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/ProblemDetails'}
