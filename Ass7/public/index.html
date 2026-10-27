@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CampusEats | GraphQL Menu</title>
+  <style>
+    :root { color-scheme: light; --ink:#1f2937; --muted:#667085; --brand:#176b52; --line:#e5e7eb; --paper:#f6f8f7; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background:var(--paper); color:var(--ink); }
+    header { background:#123d32; color:white; padding:25px max(20px, calc((100% - 1000px)/2)); }
+    header .eyebrow { margin:0 0 5px; color:#c5e7d9; font-size:.8rem; text-transform:uppercase; letter-spacing:.12em; }
+    h1 { margin:0; font-size:clamp(1.6rem,4vw,2.3rem); }
+    header p { margin:8px 0 0; color:#e1eee9; }
+    main { width:min(1000px, calc(100% - 32px)); margin:28px auto 48px; display:grid; gap:20px; grid-template-columns: minmax(0, 1.6fr) minmax(260px, .9fr); }
+    section { background:white; border:1px solid var(--line); border-radius:16px; padding:22px; box-shadow:0 6px 24px #172b2410; }
+    h2 { font-size:1.15rem; margin:0 0 6px; }
+    .sub { color:var(--muted); font-size:.92rem; margin:0 0 18px; }
+    .toolbar { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    button { border:0; border-radius:9px; background:var(--brand); color:white; padding:10px 14px; font-weight:650; cursor:pointer; }
+    button:hover { background:#10543f; } button:disabled { opacity:.6; cursor:wait; }
+    table { border-collapse:collapse; width:100%; margin-top:14px; }
+    th,td { padding:12px 8px; border-bottom:1px solid var(--line); text-align:left; font-size:.92rem; }
+    th { color:var(--muted); font-weight:600; font-size:.8rem; text-transform:uppercase; }
+    .status { display:inline-block; padding:4px 8px; border-radius:999px; font-size:.78rem; font-weight:650; }
+    .yes { background:#e2f6e9; color:#17653b; } .no { background:#fce8e6; color:#a12a22; }
+    label { display:block; font-size:.88rem; font-weight:600; margin:14px 0 6px; }
+    input { width:100%; border:1px solid #cfd5d2; border-radius:8px; padding:11px 12px; font:inherit; }
+    .check { display:flex; align-items:center; gap:9px; margin:14px 0 18px; font-weight:500; }
+    .check input { width:auto; }
+    .message { min-height:22px; margin:12px 0 0; font-size:.88rem; color:var(--muted); overflow-wrap:anywhere; }
+    .error { color:#b42318; } .success { color:#17653b; }
+    .endpoint { font-family:ui-monospace, SFMono-Regular, Menlo, monospace; background:#f0f4f2; padding:3px 6px; border-radius:5px; }
+    .foot { color:var(--muted); font-size:.82rem; margin-top:18px; }
+    @media (max-width:720px) { main { grid-template-columns:1fr; } section { padding:18px; } }
+  </style>
+</head>
+<body>
+<header>
+  <p class="eyebrow">CS543 · Web Services · Assignment 7</p>
+  <h1>CampusEats Menu</h1>
+  <p>A small GraphQL service backed by a MySQL database.</p>
+</header>
+<main>
+  <section>
+    <div class="toolbar">
+      <div><h2>Available menu records</h2><p class="sub">Loaded from the <span class="endpoint">dishes</span> GraphQL query.</p></div>
+      <button id="refreshBtn" type="button">Refresh list</button>
+    </div>
+    <div style="overflow-x:auto">
+      <table aria-label="Menu dishes">
+        <thead><tr><th>ID</th><th>Dish</th><th>Price</th><th>Available</th></tr></thead>
+        <tbody id="dishRows"><tr><td colspan="4">Loading dishes…</td></tr></tbody>
+      </table>
+    </div>
+    <p id="listMessage" class="message" role="status" aria-live="polite"></p>
+    <p class="foot">GraphQL endpoint: <span class="endpoint">/graphql</span></p>
+  </section>
+  <section>
+    <h2>Add a dish</h2>
+    <p class="sub">Submit the <span class="endpoint">addDish</span> mutation to insert a row into MySQL.</p>
+    <form id="dishForm">
+      <label for="dishName">Dish name</label>
+      <input id="dishName" name="name" maxlength="120" placeholder="e.g. Paneer Roll" required>
+      <label for="dishPrice">Price (₹)</label>
+      <input id="dishPrice" name="price" type="number" min="0" max="999999" step="0.01" placeholder="90" required>
+      <label class="check"><input id="dishAvailable" type="checkbox" checked> Available for order</label>
+      <button id="addBtn" type="submit">Add dish</button>
+    </form>
+    <p id="formMessage" class="message" role="status" aria-live="polite"></p>
+    <p class="foot">This page uses plain HTML, CSS and <span class="endpoint">fetch()</span>—no frontend framework required.</p>
+  </section>
+</main>
+<script>
+  const rows = document.querySelector('#dishRows');
+  const listMessage = document.querySelector('#listMessage');
+  const formMessage = document.querySelector('#formMessage');
+  const addBtn = document.querySelector('#addBtn');
+
+  async function graphqlRequest(query, variables = {}) {
+    const response = await fetch('/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, variables })
+    });
+    const payload = await response.json();
+    if (!response.ok || payload.errors?.length) {
+      throw new Error(payload.errors?.map(error => error.message).join('; ') || 'GraphQL request failed');
+    }
+    return payload.data;
+  }
+
+  async function loadDishes() {
+    rows.innerHTML = '<tr><td colspan="4">Loading dishes…</td></tr>';
+    listMessage.textContent = '';
+    try {
+      const data = await graphqlRequest(`query ListDishes { dishes { id name price available } }`);
+      rows.replaceChildren();
+      if (!data.dishes.length) {
+        rows.innerHTML = '<tr><td colspan="4">No dishes found. Add one using the form.</td></tr>';
+      }
+      for (const dish of data.dishes) {
+        const tr = document.createElement('tr');
+        const values = [dish.id, dish.name, `₹${Number(dish.price).toFixed(2)}`];
+        for (const value of values) {
+          const td = document.createElement('td'); td.textContent = value; tr.appendChild(td);
+        }
+        const statusCell = document.createElement('td');
+        const badge = document.createElement('span');
+        badge.className = `status ${dish.available ? 'yes' : 'no'}`;
+        badge.textContent = dish.available ? 'Yes' : 'No';
+        statusCell.appendChild(badge); tr.appendChild(statusCell); rows.appendChild(tr);
+      }
+      listMessage.textContent = `${data.dishes.length} dish(es) loaded successfully.`;
+      listMessage.className = 'message success';
+    } catch (error) {
+      rows.innerHTML = '<tr><td colspan="4">Could not load dishes.</td></tr>';
+      listMessage.textContent = `${error.message}. Check that MySQL is running and the server is started.`;
+      listMessage.className = 'message error';
+    }
+  }
+
+  document.querySelector('#refreshBtn').addEventListener('click', loadDishes);
+  document.querySelector('#dishForm').addEventListener('submit', async event => {
+    event.preventDefault();
+    const name = document.querySelector('#dishName').value.trim();
+    const price = Number(document.querySelector('#dishPrice').value);
+    const available = document.querySelector('#dishAvailable').checked;
+    if (!name || !Number.isFinite(price) || price < 0) {
+      formMessage.textContent = 'Enter a dish name and a valid non-negative price.';
+      formMessage.className = 'message error'; return;
+    }
+    addBtn.disabled = true; formMessage.textContent = 'Adding dish…'; formMessage.className = 'message';
+    try {
+      const data = await graphqlRequest(
+        `mutation AddDish($input: AddDishInput!) { addDish(input: $input) { id name price available } }`,
+        { input: { name, price, available } }
+      );
+      formMessage.textContent = `Added “${data.addDish.name}” with ID ${data.addDish.id}.`;
+      formMessage.className = 'message success';
+      event.target.reset(); document.querySelector('#dishAvailable').checked = true;
+      await loadDishes();
+    } catch (error) {
+      formMessage.textContent = error.message;
+      formMessage.className = 'message error';
+    } finally { addBtn.disabled = false; }
+  });
+
+  loadDishes();
+</script>
+</body>
+</html>
