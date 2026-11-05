@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusEats Menu Catalogue</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>CampusEats Menu Catalogue</h1>
+        <p>Food Menu Management System</p>
+    </header>
+
+    <main>
+
+        <section class="menu-section">
+
+            <div class="heading">
+                <h2>Available Dishes</h2>
+                <button id="refreshBtn">Refresh Menu</button>
+            </div>
+
+            <p id="status">Loading menu...</p>
+
+            <div id="dishList" class="dish-list"></div>
+
+        </section>
+
+
+        <section class="form-section">
+
+            <h2>Add a New Dish</h2>
+
+            <form id="dishForm">
+
+                <label for="name">Dish Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter dish name"
+                    required
+                >
+
+                <label for="price">Price (₹)</label>
+
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="Enter price"
+                    min="0"
+                    step="0.01"
+                    required
+                >
+
+                <label for="available">Availability</label>
+
+                <select id="available">
+                    <option value="true">Available</option>
+                    <option value="false">Not Available</option>
+                </select>
+
+                <button type="submit">Add Dish</button>
+
+            </form>
+
+            <p id="message"></p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>CampusEats | CS543 Web Services Assignment 8</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

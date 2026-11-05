@@ -1,0 +1,154 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f5f9;
+    color: #263445;
+}
+
+header {
+    background: #174b70;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #dceaf5;
+}
+
+main {
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 25px;
+}
+
+section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #174b70;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    background: #1769aa;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #104b7c;
+}
+
+.dish-list {
+    margin-top: 20px;
+}
+
+.dish-card {
+    padding: 17px;
+    margin-bottom: 12px;
+    border: 1px solid #e0e5eb;
+    border-left: 4px solid #16a085;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.dish-card h3 {
+    margin-bottom: 8px;
+}
+
+.dish-card p {
+    margin-top: 5px;
+    color: #657487;
+}
+
+.available {
+    color: #16834d;
+    font-weight: bold;
+}
+
+.unavailable {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd5df;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+form button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+#status,
+#message {
+    margin-top: 12px;
+    color: #64748b;
+}
+
+.success {
+    color: #16834d !important;
+}
+
+.error {
+    color: #c0392b !important;
+}
+
+footer {
+    background: #173653;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

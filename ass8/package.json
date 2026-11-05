@@ -1,0 +1,15 @@
+
+{
+  "name": "campuseats-assignment-8",
+  "version": "1.0.0",
+  "description": "CampusEats Menu Catalogue REST API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
