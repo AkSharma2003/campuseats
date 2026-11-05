@@ -1,6 +1,11 @@
 
 # CampusEats REST API - Assignment 8
-
+## Team Members
+- Name:- Piyush Lalchand Menghani  roll number: 20252651039
+- Name:- Ankit Kumar Sharma        roll number: 20252651007
+- Name:- Vivek Kumar Kosta         roll number: 20252651065
+- Name:- Vijay Singh               roll number: 20252651064
+- Name:- Shubham Gupta             roll number: 20252651021
 ## Selected CampusEats Service
 
 We selected the Menu / Catalogue Service.
