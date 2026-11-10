@@ -20,21 +20,76 @@
 
     <main>
 
-        <section class="menu-section">
+        <!-- LOGIN SECTION -->
+        <section class="form-section" id="loginSection">
+
+            <h2>Login to CampusEats</h2>
+
+            <form id="loginForm">
+
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter email"
+                    required
+                >
+
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+                <button type="submit">Login</button>
+
+            </form>
+
+            <p id="loginMessage"></p>
+
+        </section>
+
+
+        <!-- USER SECTION -->
+        <div id="userSection" class="form-section" hidden>
+
+            <p id="userInfo"></p>
+
+            <button type="button" id="logoutBtn">
+                Logout
+            </button>
+
+        </div>
+
+
+        <!-- AVAILABLE DISHES -->
+        <section class="menu-section" id="menuSection" hidden>
 
             <div class="heading">
+
                 <h2>Available Dishes</h2>
-                <button id="refreshBtn">Refresh Menu</button>
+
+                <button id="refreshBtn" disabled>
+                    Refresh Menu
+                </button>
+
             </div>
 
-            <p id="status">Loading menu...</p>
+            <p id="status">
+                Please login to view the menu.
+            </p>
 
             <div id="dishList" class="dish-list"></div>
 
         </section>
 
 
-        <section class="form-section">
+        <!-- ADD NEW DISH -->
+        <section class="form-section" id="addSection" hidden>
 
             <h2>Add a New Dish</h2>
 
@@ -63,11 +118,16 @@
                 <label for="available">Availability</label>
 
                 <select id="available">
+
                     <option value="true">Available</option>
+
                     <option value="false">Not Available</option>
+
                 </select>
 
-                <button type="submit">Add Dish</button>
+                <button type="submit">
+                    Add Dish
+                </button>
 
             </form>
 
@@ -77,11 +137,20 @@
 
     </main>
 
+
+    <!-- FOOTER -->
     <footer>
-        <p>CampusEats | CS543 Web Services Assignment 8</p>
+
+        <p>
+            CampusEats | CS543 Web Services Assignment 9
+        </p>
+
     </footer>
 
+
+    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
+
 </html>
