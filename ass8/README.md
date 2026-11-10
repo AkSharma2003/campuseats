@@ -78,7 +78,14 @@ Open the application:
 
 http://localhost:3000
 
-## Assignment Questions and Answers
+# CampusEats REST API - Assignment 9
+
+## Team Members
+- Name:- Piyush Lalchand Menghani  roll number: 20252651039
+- Name:- Ankit Kumar Sharma        roll number: 20252651007
+- Name:- Vivek Kumar Kosta         roll number: 20252651065
+- Name:- Vijay Singh               roll number: 20252651064
+- Name:- Shubham Gupta             roll number: 20252651021
 
 ### 1. Which CampusEats service did you pick, and what are its routes (method + path)?
 
@@ -111,14 +118,82 @@ The project uses an in-memory JavaScript array containing four initial menu reco
 
 The data is temporary and resets when the server restarts.
 
-## Team Members
 
-Add all team members' names and roll numbers here.
+# Assignment 9 - Securing the API
 
-## Demonstration Video
+## Security Features
 
-Add Google Drive demonstration video link here.
+1. User authentication using JWT.
+2. Password hashing using bcryptjs.
+3. Login endpoint: POST /login.
+4. JWT verification middleware.
+5. Role-based authorization middleware.
+6. Protected GET /items route.
+7. Protected GET /items/:id route.
+8. Protected POST /items route.
 
-## Screenshots
+## Seeded Users
 
-Add the before and after screenshots of the menu here.
+| Email | Password | Role |
+|---|---|---|
+| customer@campuseats.com | customer123 | customer |
+| restaurant@campuseats.com | restaurant123 | restaurant |
+
+## API Routes
+
+| Method | Endpoint | Authentication | Authorization |
+|---|---|---|---|
+| POST | /login | No | No |
+| GET | /items | Yes | Any authenticated user |
+| GET | /items/:id | Yes | Any authenticated user |
+| POST | /items | Yes | restaurant or admin |
+
+## HTTP Status Codes
+
+- 200: Successful login or GET request.
+- 201: New menu item created.
+- 401: Missing, invalid or expired token / invalid credentials.
+- 403: Insufficient permissions.
+- 404: Dish not found.
+- 422: Invalid input.
+
+## Password Security
+
+Passwords are hashed using bcryptjs.
+Plain-text passwords are not stored.
+
+## JWT Security
+
+JWT tokens are signed using a secret key
+and expire after one hour.
+
+## Testing
+
+All security scenarios were tested using Postman.
+
+Screenshots demonstrate:
+- Missing token returns 401.
+- Successful login returns JWT.
+- Authenticated GET returns 200.
+- Customer POST returns 403.
+- Restaurant POST returns 201.
+
+
+
+## GitHub Repository
+
+https://github.com/AkSharma2003/campuseats.git
+
+## login as a customer:
+
+Email	customer@campuseats.com
+Password	customer123
+
+## login as a restaurant:
+
+Email	restaurant@campuseats.com
+Password	restaurant123
+
+## JWT Token
+
+$env:JWT_SECRET="campuseats_assignment09_secret_2026"
